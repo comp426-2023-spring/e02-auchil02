@@ -38,11 +38,12 @@ It also creates logs in a common log format (CLF) so that you can better.
     process.exit(0)
 } 
 // Load express and other dependencies for serving HTML, CSS, and JS files
-import express from 'express'
+import express, { json, urlencoded } from 'express'
 // Use CJS __filename and __dirname in ES module scope
 // https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { json } from 'express';
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 // Load dependencies for logging
@@ -71,6 +72,70 @@ app.use(morgan(':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:htt
 // Serve static files
 const staticpath = args.stat || args.s || process.env.STATICPATH || path.join(__dirname, 'public')
 app.use('/', express.static(staticpath))
+app.use(json());
+app.use(urlencoded({extended: true}));
+
+// root endpoint
+app.get('/app', (req, res) => {
+	res.status(200).send("200 OK");
+});
+
+// get
+// rps no opp
+app.get('/app/rps', (req, res) => {
+	res.status(200).send(rps());
+});
+
+// rps opp
+app.get('/app/rps', (req, res) => {
+	res.status(200).send(rps(req.query.shot));
+});
+
+// rps urlencoded
+app.get('/app/rps/play', (req, res) => {
+	res.status(200).send(rps(req.query.shot));
+});
+
+// rps parameter endpoint
+app.get('/app/rps/play/:shot', (req, res) => {
+	res.status(200).send(rps(req.params.shot));
+});
+
+// rpsls no opp
+app.get('/app/rpsls', (req, res) => {
+	res.status(200).send(rpsls());
+});
+
+// rpsls opp
+app.get('/app/rpsls', (req, res) => {
+	res.status(200).send(rpsls(req.query.shot));
+});
+
+// rpsls urlencoded
+app.get('/app/rpsls/play', (req, res) => {
+	res.status(200).send(rpsls(req.query.shot));
+});
+
+// rpsls parameter endpoint
+app.get('/app/rpsls/play/:shot', (req, res) => {
+	res.status(200).send(rpsls(req.params.shot));
+});
+
+// rps json post
+app.post('/app/rps/play', (req, res) => {
+	res.status(200).send(rps(req.body.shot));
+});
+
+// rpsls json post
+app.post('/app/rpsls/play', (req, res) => {
+	res.status(200).send(rpsls(req.body.shot));
+});
+
+// nonexistent endpoint
+app.get('*', (req, res) => {
+	res.status(400).send("404 NOT FOUND");
+});
+
 // Create app listener
 const server = app.listen(port)
 // Create a log entry on start
