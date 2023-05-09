@@ -16,5 +16,12 @@ function resetChoices() {
     document.getElementById("scissors").checked = false;
     document.getElementById("lizard").checked = false;
     document.getElementById("spock").checked = false;
-  }
+}
   
+function showRules() {
+    window.location.href = "rules.html";
+}  
+
+function goBack() {
+    window.location.href = "index.html";
+}
