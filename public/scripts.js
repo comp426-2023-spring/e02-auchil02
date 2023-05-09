@@ -8,7 +8,8 @@ function resetChoices() {
     document.getElementById("rpsls").checked = false;
   
     // Reset opponent checkbox
-    document.getElementById("opponent").checked = false;
+    document.getElementById("compYes").checked = false;
+    document.getElementById("compNo").checked = false;
   
     // Reset shots radio buttons
     document.getElementById("rock").checked = false;
