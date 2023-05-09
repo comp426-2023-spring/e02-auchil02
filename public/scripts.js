@@ -62,4 +62,7 @@ function play() {
         console.error(error);
         // TODO: Handle the error by displaying an error message to the user
       });
+
+    const resultElem = document.getElementById('result');
+    resultElem.textContent = `You chose ${playerChoice} and the computer chose ${computerChoice}. The winner is ${winner}!`;
   }  
