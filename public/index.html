@@ -1,62 +1,48 @@
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
         <title>Rock, Paper, Scissors (, Lizard, Spock??)!</title>
         <!-- Link to your script file(s) and CSS in here somewhere -->
         <script src="scripts.js"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-
-    <!-- Your interface markup goes here -->
-    <!-- For interface examples, look in the `/examples/` directory in the root of your starter code repo. -->
+        <h1>Choose Your Game</h1>
         <div>
-            <h1>Choose Your Game</h1>
-            <form id="game-form">
-                <input type="radio" name="game" value="rps" id="rps">
-                <label for="rps">Rock-Paper-Scissors!</label>
-                <br>
-                <input type="radio" name="game" value="rpsls" id="rpsls">
-                <label for="rpsls">Rock-Paper-Scissors-Lizard-Spock!</label>
-            </form>
+            <input type="radio" name="game" value="rps" id="rps">
+            <label for="rps">Rock-Paper-Scissors!</label>
+            <br>
+            <input type="radio" name="game" value="rpsls" id="rpsls">
+            <label for="rpsls">Rock-Paper-Scissors-Lizard-Spock!</label>
         </div>
         <button type="button" id="rules" onclick="showRules()">Rules</button>
+        <h1>Play Against Computer?</h1>
         <div>
-            <h1>Play Against Computer?</h1>
-            <form id = "computer-form">
-                <input type="radio" name="computer" value="compYes" id="compYes">
-                <label for="rps">Yes</label>
-                <br>
-                <input type="radio" name="computer" value="compNo" id="compNo">
-                <label for="rpsls">No</label>
-            </form>
+            <input type="radio" name="computer" value="compYes" id="compYes">
+            <label for="rps">Yes</label>
+            <br>
+            <input type="radio" name="computer" value="compNo" id="compNo">
+            <label for="rpsls">No</label>
+        </div>
+        <h1>What to Throw?</h1>
+        <div>
+            <input type="radio" id="rock" name="shot" value="rock">
+            <label for="rock">Rock!</label>
+            <br>
+            <input type="radio" id="paper" name="shot" value="paper">
+            <label for="paper">Paper!</label>
+            <br>
+            <input type="radio" id="scissors" name="shot" value="scissors">
+            <label for="scissors">Scissors!</label>
+            <br>
+            <input type="radio" id="lizard" name="shot" value="lizard">
+            <label for="lizard">Lizard!</label>
+            <br>
+            <input type="radio" id="spock" name="shot" value="spock">
+            <label for="spock">Spock!</label>
         </div>
         <div>
-            <h1>What to Throw?</h1>
-            <form id="shot-form">
-                <div>
-                  <label for="rock">Rock!</label>
-                  <input type="radio" id="rock" name="shot" value="rock">
-                </div>
-                <div>
-                  <label for="paper">Paper!</label>
-                  <input type="radio" id="paper" name="shot" value="paper">
-                </div>
-                <div>
-                  <label for="scissors">Scissors!</label>
-                  <input type="radio" id="scissors" name="shot" value="scissors">
-                </div>
-                <div>
-                  <label for="lizard">Lizard!</label>
-                  <input type="radio" id="lizard" name="shot" value="lizard">
-                </div>
-                <div>
-                  <label for="spock">Spock!</label>
-                  <input type="radio" id="spock" name="shot" value="spock">
-                </div>
-            </form>
-        </div>
-        <div>
-            <button type="button" id="play-btn" onclick="play()">Play</button>
+            <button type="submit" id="play-btn" onclick="play()">Play</button>
             <button type="button" id="startOver" onclick="resetChoices()">Start Over</button>
         </div>
     </body>
