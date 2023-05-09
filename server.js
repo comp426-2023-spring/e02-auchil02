@@ -72,6 +72,8 @@ app.use(morgan(':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:htt
 // Serve static files
 const staticpath = args.stat || args.s || process.env.STATICPATH || path.join(__dirname, 'public')
 app.use('/', express.static(staticpath))
+
+import { rps, rpsls } from './lib/rpsls.js'
 app.use(json());
 app.use(urlencoded({extended: true}));
 
