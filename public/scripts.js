@@ -26,3 +26,40 @@ function goBack() {
     window.location.href = "index.html";
 }
 
+function play() {
+    // Get the game type
+    const gameForm = document.getElementById("game-form");
+    const gameType = gameForm.elements["game"].value;
+  
+    // Get the shot
+    const shotForm = document.getElementById("shot-form");
+    const shot = shotForm.elements["shot"].value;
+  
+    // Get the opponent type
+    const computerForm = document.getElementById("computer-form");
+    const isComputer = computerForm.elements["computer"].value === "compYes";
+  
+    // Construct the endpoint URL based on the game type and opponent type
+    let endpoint = "/app/" + gameType + "/play";
+    if (isComputer) {
+      endpoint += "?shot=" + shot;
+    }
+  
+    // Make the HTTP request to the server
+    fetch(endpoint, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the server
+        console.log(data);
+        // TODO: Update the UI to show the game result
+      })
+      .catch((error) => {
+        console.error(error);
+        // TODO: Handle the error by displaying an error message to the user
+      });
+  }  
