@@ -43,7 +43,6 @@ import express, { json, urlencoded } from 'express'
 // https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { json } from 'express';
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 // Load dependencies for logging
